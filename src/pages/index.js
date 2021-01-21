@@ -17,6 +17,7 @@ export default function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault()
     const form = e.target
+    alert(form.getAttribute('name'))
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
