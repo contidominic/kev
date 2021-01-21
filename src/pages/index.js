@@ -10,12 +10,14 @@ import * as React from "react"
 
 const handleSubmit = (event) => {
   event.preventDefault()
+ value1 = event.order2; 
   fetch("/", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: encode({
-     "form-name": event.target.value("name"),
-      ...name
+    "form-name": event.target.getAttribute("name"),
+      ...name,
+     value1;
  
     })
   }).then(() => alert("/thank-you/")).catch(error => alert(error))
