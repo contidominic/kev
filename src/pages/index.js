@@ -1,6 +1,6 @@
 import * as React from "react"
 
-const index = () => {
+
  
  function encode(data) {
     return Object.keys(data)
@@ -17,8 +17,10 @@ const handleSubmit = (event) => {
       "form-name": event.target.getAttribute("name"),
       ...name
     })
-  }).then(() => navigate("/thank-you/")).catch(error => alert(error))
+  }).then(() => alert("/thank-you/")).catch(error => alert(error))
 }
+
+const index = () => {
 
 return (
  <form data-netlify="true" name="pizzaOrder" method="post" onSubmit={handleSubmit}>
