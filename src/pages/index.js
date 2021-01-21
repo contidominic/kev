@@ -15,7 +15,7 @@ const handleSubmit = (event) => {
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: encode({
       "order": event.target.getAttribute("order"),
-      ...name
+      ...order
  
     })
   }).then(() => alert("/thank-you/")).catch(error => alert(error))
