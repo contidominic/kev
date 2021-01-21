@@ -1,7 +1,7 @@
 import * as React from "react"
 
  
- function encode(data) {
+function encode(data) {
     return Object.keys(data)
         .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
         .join("&")
@@ -12,20 +12,17 @@ const handleSubmit = (event) => {
   fetch("/", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams(formData).toString()
-  }).then(() => alert('Form successfully submitted')).catch((error) =>
-    alert(error))
     body: encode({
       "form-name": event.target.getAttribute("name"),
       ...name
     })
-  }).then(() =>alert("/thank-you/")).catch(error => alert(error))
+  }).then(() => navigate("/thank-you/")).catch(error => alert(error))
 }
 
 const IndexPage = () => {
 return (
  <form data-netlify="true" name="pizzaOrder" method="post" onSubmit={handleSubmit}>
-    <input type="hidden" name="form-name" value="pizzaOrder" />
+    <input name="form-name" value="pizzaOrder" />
     <label>What order did the pizza give to the pineapple?
       <input name="order" type="text" onChange={handleChange} />
     </label>
