@@ -16,6 +16,8 @@ const handleSubmit = (event) => {
     body: encode({
       "form-name": event.target.getAttribute("name"),
       ...name
+     "order": event.target.value("order"),
+     ...order
     })
   }).then(() => alert("/thank-you/")).catch(error => alert(error))
 }
