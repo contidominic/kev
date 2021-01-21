@@ -30,6 +30,7 @@ export default function Contact() {
   }
 
   return (
+   <>
  
       <h1>Contact</h1>
       <form
@@ -72,6 +73,6 @@ export default function Contact() {
           <button type="submit">Send</button>
         </p>
       </form>
-  
+  </>
   )
 }
