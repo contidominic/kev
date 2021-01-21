@@ -1,48 +1,39 @@
 import * as React from "react"
 
- const handleSubmit = (e) => {
-  e.preventDefault()
-  let myForm = document.getElementById('pizzaOrder');
-  let formData = new FormData(myForm)
-  fetch('/', {
-    method: 'POST',
+const index = () => {
+ 
+ function encode(data) {
+    return Object.keys(data)
+        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+        .join("&")
+  }
+
+const handleSubmit = (event) => {
+  event.preventDefault()
+  fetch("/", {
+    method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams(formData).toString()
-  }).then(() => alert('Form successfully submitted')).catch((error) =>
-    alert(error))
+    body: encode({
+      "form-name": event.target.getAttribute("name"),
+      ...name
+    })
+  }).then(() => navigate("/thank-you/")).catch(error => alert(error))
 }
 
-const IndexPage = () => {
+return (
+ <form data-netlify="true" name="pizzaOrder" method="post" onSubmit={handleSubmit}>
+    <input type="hidden" name="form-name" value="pizzaOrder" />
+    <label>What order did the pizza give to the pineapple?
+      <input name="order" type="text" onChange={handleChange} />
+    </label>
+    <input type="submit"/>
+  </form>
  
-    return (
-   
-        <h1>Contact</h1>
-       
+ );
 
-<form name="contact" method="POST" data-netlify="true">
-  <p>
-    <label>Your Name: <input type="text" name="name" /></label>   
-  </p>
-  <p>
-    <label>Your Email: <input type="email" name="email" /></label>
-  </p>
-  <p>
-    <label>Your Role: <select name="role[]" multiple>
-      <option value="leader">Leader</option>
-      <option value="follower">Follower</option>
-    </select></label>
-  </p>
-  <p>
-    <label>Message: <textarea name="message"></textarea></label>
-  </p>
-  <p>
-    <button onSubmit={handleSubmit} type="submit">Send</button>
-  </p>
-</form>
-  
 
-    );
+}
 
-    }
+
  
 export default IndexPage
