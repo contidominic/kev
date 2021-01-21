@@ -1,10 +1,8 @@
 import * as React from "react"
-
- 
 const IndexPage = () => {
-  document.querySelector("form").addEventListener("submit", handleSubmit);
+ document.querySelector("form").addEventListener("submit", handleSubmit);
 
-const handleSubmit = (e) => {
+ const handleSubmit = (e) => {
   e.preventDefault()
   let myForm = document.getElementById('pizzaOrder');
   let formData = new FormData(myForm)
@@ -15,6 +13,9 @@ const handleSubmit = (e) => {
   }).then(() => console.log('Form successfully submitted')).catch((error) =>
     alert(error))
 }
+ 
+
+ 
    return (
     <h1> hey </h1>
      <form name="contact" method="POST" data-netlify="true">
@@ -34,7 +35,7 @@ const handleSubmit = (e) => {
     <label>Message: <textarea name="message"></textarea></label>
   </p>
   <p>
-    <button type="submit">Send</button>
+    <button onSumbit={handleSubmit}type="submit">Send</button>
   </p>
 </form>
      
