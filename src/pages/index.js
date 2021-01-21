@@ -1,6 +1,4 @@
 import * as React from "react"
-const IndexPage = () => {
- document.querySelector("form").addEventListener("submit", handleSubmit);
 
  const handleSubmit = (e) => {
   e.preventDefault()
@@ -10,20 +8,23 @@ const IndexPage = () => {
     method: 'POST',
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams(formData).toString()
-  }).then(() => console.log('Form successfully submitted')).catch((error) =>
+  }).then(() => alert('Form successfully submitted')).catch((error) =>
     alert(error))
 }
- 
 
+const IndexPage = () => {
  
-   return (
-    <h1> hey </h1>
-     <form name="contact" method="POST" data-netlify="true">
+    return (
+   
+        <h1>Contact</h1>
+       
+
+<form name="contact" method="POST" data-netlify="true">
   <p>
     <label>Your Name: <input type="text" name="name" /></label>   
   </p>
   <p>
-    <label>Your Email: <input type="email" name="emailkl" /></label>
+    <label>Your Email: <input type="email" name="email" /></label>
   </p>
   <p>
     <label>Your Role: <select name="role[]" multiple>
@@ -35,11 +36,13 @@ const IndexPage = () => {
     <label>Message: <textarea name="message"></textarea></label>
   </p>
   <p>
-    <button onSumbit={handleSubmit}type="submit">Send</button>
+    <button onSubmit={handleSubmit} type="submit">Send</button>
   </p>
 </form>
-     
-  );
-}
+  
 
+    );
+
+    }
+ 
 export default IndexPage
