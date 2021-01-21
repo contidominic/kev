@@ -24,7 +24,7 @@ return (
  <form data-netlify="true" name="pizzaOrder" method="post" onSubmit={handleSubmit}>
     <input name="form-name" value="pizzaOrder" />
     <label>What order did the pizza give to the pineapple?
-      <input name="order" type="text" onChange={handleChange} />
+      <input name="order" type="text"  />
     </label>
     <input type="submit"/>
   </form>
