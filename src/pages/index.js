@@ -16,7 +16,7 @@ const handleSubmit = (event) => {
       "form-name": event.target.getAttribute("name"),
       ...name
     })
-  }).then(() => navigate("/thank-you/")).catch(error => alert(error))
+  }).then(() => alert("thank-you")).catch(error => alert(error))
 }
 
 const IndexPage = () => {
