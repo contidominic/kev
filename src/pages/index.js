@@ -1,48 +1,37 @@
 import * as React from "react"
 
-
  
+ function encode(data) {
+    return Object.keys(data)
+        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+        .join("&")
+  }
 
-const handleSubmit = (e) => {
-  const handleSubmit = (e) => {
-      e.preventDefault()
-      let myForm = document.getElementById('myForm');
-      let formData = new FormData(myForm)
-      fetch('/', {
-    	method: 'POST',
-    	body: formData
-      })
-    	.then(() => alert('success!'))
-    	.catch((error) => alert(error))
-    }
+const handleSubmit = (event) => {
+  event.preventDefault()
+  fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(formData).toString()
+  }).then(() => alert('Form successfully submitted')).catch((error) =>
+    alert(error))
+    body: encode({
+      "form-name": event.target.getAttribute("name"),
+      ...name
+    })
+  }).then(() =>alert("/thank-you/")).catch(error => alert(error))
 }
 
 const IndexPage = () => {
-
 return (
- <form method="post" name="Contact Form" id="myForm" data-netlify="true">
-      <p>
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name">
-      </p>
-      <p>
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email">
-      </p>
-      <p>
-        <label for="comments">Comments:</label><br/>
-        <textarea name="comments" id="comments"></textarea>
-      </p>
-      <p>
-        <button onSubmit={handleSubmit} type="submit">Submit</button>
-      </p>
-    </form>
+ <form data-netlify="true" name="pizzaOrder" method="post" onSubmit={handleSubmit}>
+    <input type="hidden" name="form-name" value="pizzaOrder" />
+    <label>What order did the pizza give to the pineapple?
+      <input name="order" type="text" onChange={handleChange} />
+    </label>
+    <input type="submit"/>
+  </form>
  
  );
-
-
-}
-
-
  
-export default IndexPage
+}
