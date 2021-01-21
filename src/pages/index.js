@@ -14,8 +14,8 @@ const handleSubmit = (event) => {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: encode({
-      "order": event.target.getAttribute("order"),
-      ...order
+     "form-name": event.target.getAttribute("name"),
+      ...name
  
     })
   }).then(() => alert("/thank-you/")).catch(error => alert(error))
@@ -28,6 +28,7 @@ return (
     <input type="hidden" name="form-name" value="pizzaOrder" />
     <label>What order did the pizza give to the pineapple?
       <input name="order" type="text" />
+       <input name="order2" type="text" />
     </label>
     <input type="submit"/>
   </form>
