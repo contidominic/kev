@@ -25,7 +25,7 @@ export default function Contact() {
         ...state,
       }),
     })
-      .then(() => navigate(form.getAttribute('action')))
+      .then(() => alert("done"))
       .catch((error) => alert(error))
   }
 
@@ -36,7 +36,7 @@ export default function Contact() {
       <form
         name="contact"
         method="post"
-        action="/thanks/"
+      
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         onSubmit={handleSubmit}
